@@ -1,0 +1,15 @@
+body {
+  background-color: #f8f9fa;
+}
+
+#result a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#result a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
