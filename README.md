@@ -15,13 +15,13 @@ To install and run this application locally for development:
 1. Clone the repository or download the ZIP file and extract it.
 
     ```bash
-    git clone https://github.com/<your-github-username>/whatsapp-link-cleaner.git
+    git clone https://github.com/<your-github-username>/whatsapp-number-cleaner.git
     ```
 
 2. Navigate to the project directory.
 
     ```bash
-    cd whatsapp-link-cleaner
+    cd whatsapp-number-cleaner
     ```
 
 3. Install dependencies.
