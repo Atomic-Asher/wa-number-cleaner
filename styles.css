@@ -13,3 +13,13 @@ body {
   color: #0056b3;
   text-decoration: underline;
 }
+#changes {
+    font-family: monospace;
+    background-color: #000;
+    color: #0f0;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: pre-line;
+    overflow-x: auto;
+    max-height: 200px;
+}
