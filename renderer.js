@@ -16,11 +16,7 @@ function cleanNumber() {
     return;
   }
 
-  let countryCode = document.getElementById("country").value;
-  if (countryCode === '86') {
-    showError("Sorry, country code 86 (China) is not supported.");
-    return;
-  }
+ 
 
   phoneNumber = countryCode + phoneNumber; // prepend with selected country code
   let link = 'https://wa.me/' + phoneNumber;
