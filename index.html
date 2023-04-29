@@ -13,7 +13,7 @@
       <div class="col-md-6">
         <h1 class="text-center mb-4">WhatsApp Link Cleaner</h1>
         <div class="input-group mb-3">
-          <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number">
+          <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number" onkeydown="if (event.key === 'Enter') cleanNumber()">
           <div class="input-group-append">
             <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="cleanNumber()">Clean Number</button>
           </div>
