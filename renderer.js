@@ -1,22 +1,38 @@
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("button-addon2").addEventListener("click", cleanNumber);
+});
+
 function cleanNumber() {
-    let phoneNumber = document.getElementById("phone").value;
-    phoneNumber = phoneNumber.replace(/\D/g, "");  // remove all non-digit characters
+  let phoneNumber = document.getElementById("phone").value;
+  phoneNumber = phoneNumber.replace(/\D/g, ""); // remove all non-digit characters
 
-    // Remove leading zeros if present
-    while (phoneNumber.startsWith("0")) {
-        phoneNumber = phoneNumber.substring(1);
-    }
+  if (phoneNumber.length > 10) {
+    showError("Invalid mobile number. Please enter a 10-digit number.");
+    return;
+  }
 
-    // Prepend 91 only if it's not already present at the beginning
-    if (!phoneNumber.startsWith("91")) {
-        phoneNumber = "91" + phoneNumber;
-    }
+  if (!/^\d+$/.test(phoneNumber)) {
+    showError("Invalid input. Please enter only numbers.");
+    return;
+  }
 
-    let link = "https://wa.me/" + phoneNumber;
-    document.getElementById("result").innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
+  let countryCode = document.getElementById("country").value;
+  if (countryCode === '86') {
+    showError("Sorry, country code 86 (China) is not supported.");
+    return;
+  }
+
+  phoneNumber = countryCode + phoneNumber; // prepend with selected country code
+  let link = 'https://wa.me/' + phoneNumber;
+  document.getElementById("result").innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
 }
 
-function copyToClipboard() {
-    let link = document.getElementById("waLink").href;
-    navigator.clipboard.writeText(link);
+function showError(message) {
+  let errorElement = document.createElement("div");
+  errorElement.classList.add("alert", "alert-danger");
+  errorElement.innerText = message;
+
+  let container = document.querySelector(".container");
+  container.insertBefore(errorElement, container.firstChild);
 }
+
