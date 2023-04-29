@@ -2,8 +2,8 @@ function cleanNumber() {
     let phoneNumber = document.getElementById("phone").value;
     phoneNumber = phoneNumber.replace(/\D/g, "");  // remove all non-digit characters
 
-    // Remove leading zero if present
-    if (phoneNumber.startsWith("0")) {
+    // Remove leading zeros if present
+    while (phoneNumber.startsWith("0")) {
         phoneNumber = phoneNumber.substring(1);
     }
 
