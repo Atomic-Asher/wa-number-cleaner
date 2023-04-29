@@ -2,6 +2,8 @@
 
 WhatsApp Link Cleaner is an Electron-based desktop application that helps you to clean phone numbers and generate WhatsApp message links.
 
+Demo: https://whatsapp-number-cleaner.netlify.app/
+
 ## Features
 
 - Cleans phone numbers, removing spaces, brackets, and other non-numeric characters.
