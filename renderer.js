@@ -15,3 +15,8 @@ function cleanNumber() {
     let link = "https://wa.me/" + phoneNumber;
     document.getElementById("result").innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
 }
+
+function copyToClipboard() {
+    let link = document.getElementById("waLink").href;
+    navigator.clipboard.writeText(link);
+}
