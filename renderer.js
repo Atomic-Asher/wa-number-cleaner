@@ -1,34 +1,45 @@
-document.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("button-addon2").addEventListener("click", cleanNumber);
-});
-
 function cleanNumber() {
   let phoneNumber = document.getElementById("phone").value;
-  phoneNumber = phoneNumber.replace(/\D/g, ""); // remove all non-digit characters
+  let originalNumber = phoneNumber;
+  phoneNumber = phoneNumber.replace(/\D/g, "");  // remove all non-digit characters
 
-  if (phoneNumber.length > 10) {
-    showError("Invalid mobile number. Please enter a 10-digit number.");
-    return;
+  // Remove leading zeros if present
+  let zerosRemoved = 0;
+  while (phoneNumber.startsWith("0")) {
+      phoneNumber = phoneNumber.substring(1);
+      zerosRemoved++;
   }
 
-  if (!/^\d+$/.test(phoneNumber)) {
-    showError("Invalid input. Please enter only numbers.");
-    return;
+  let countryCodeAdded = false;
+  let countryCode = document.getElementById("country").value;
+  
+  if (phoneNumber.length === 10) {
+      // Prepend country code if it's not already present at the beginning
+      if (!phoneNumber.startsWith(countryCode)) {
+          phoneNumber = countryCode + phoneNumber;
+          countryCodeAdded = true;
+      }
+  } else if (phoneNumber.length === 12 && phoneNumber.startsWith(countryCode)) {
+      phoneNumber = phoneNumber.substring(2);
+  } else {
+      // Throw an error if the entered number is neither 10 digits nor a 12-digit number with matching country code
+      document.getElementById("error").innerHTML = "Invalid phone number";
+      return;
   }
 
- 
-
-  phoneNumber = countryCode + phoneNumber; // prepend with selected country code
-  let link = 'https://wa.me/' + phoneNumber;
-  document.getElementById("result").innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
+  let link = "https://wa.me/" + phoneNumber;
+  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary">Clipboard</button>`;
+  
+  let changes = "Original number: " + originalNumber + "<br>";
+  changes += "Non-digit characters removed: " + (originalNumber.length - phoneNumber.length + zerosRemoved) + "<br>";
+  changes += "Leading zeros removed: " + zerosRemoved + "<br>";
+  changes += "Country code " + countryCode + " " + (countryCodeAdded ? "added" : "already present");
+  document.getElementById("changes").innerHTML = changes;
+  
+  document.getElementById("error").innerHTML = "";
 }
 
-function showError(message) {
-  let errorElement = document.createElement("div");
-  errorElement.classList.add("alert", "alert-danger");
-  errorElement.innerText = message;
-
-  let container = document.querySelector(".container");
-  container.insertBefore(errorElement, container.firstChild);
+function copyToClipboard() {
+  let link = document.getElementById("waLink").href;
+  navigator.clipboard.writeText(link);
 }
-
