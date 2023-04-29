@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>WhatsApp Link Cleaner</title>
+  <title>WhatsApp Number Cleaner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -11,19 +11,31 @@
   <div class="container py-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h1 class="text-center mb-4">WhatsApp Link Cleaner</h1>
+        <h1 class="text-center mb-4">WhatsApp Number Cleaner</h1>
+        <h3 class="text-center mb-4">Developed by <a href="https://AtomicAsher.com">Atomic Asher LLP</a></h3>
         <div class="input-group mb-3">
-          <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number" onkeydown="if (event.key === 'Enter') cleanNumber()">
+          <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number">
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="cleanNumber()">Clean Number</button>
-		<!--<div id="result" class="text-center my-3"></div>-->
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Clean Number</button>
           </div>
-		  <h3 class="text-center mb-4">Developed by <a href="https://AtomicAsher.com">Atomic Asher LLP</a></h3>
+         
+        </div>
+        <div class="form-group">
+          <label for="country">Select Country Code:</label>
+          <select class="form-control" id="country">
+            <option value="91">India (+91)</option>
+            <option value="1">USA (+1)</option>
+            <option value="44">UK (+44)</option>
+            <option value="61">Australia (+61)</option>
+            <option value="81">Japan (+81)</option>
+          </select>
         </div>
         <div id="result" class="text-center"></div>
+        <div id="error" class="text-center"></div>
       </div>
     </div>
   </div>
   <script src="renderer.js"></script>
 </body>
 </html>
+
