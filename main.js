@@ -1,14 +1,14 @@
-const { app, BrowserWindow } = require('electron')
+const { menubar } = require('menubar');
 
-function createWindow () {
-  let win = new BrowserWindow({
+const mb = menubar({
+  index: `file://${__dirname}/index.html`,
+  icon: './icon.png', // replace with path to your icon
+  browserWindow: {
     width: 800,
     height: 600,
-    webPreferences: {
-      nodeIntegration: true,
-    }
-  })
-  win.loadFile('index.html')
-}
+  }
+});
 
-app.whenReady().then(createWindow)
+mb.on('ready', () => {
+  console.log('Menubar app is ready.');
+});

@@ -1,15 +1,25 @@
 {
   "name": "whatsapp-link-cleaner",
   "version": "1.0.0",
-  "description": "",
+  "description": "wa number cleaner",
+  "author": "Anirudh Asher aka Atomic Asher",
   "main": "main.js",
   "scripts": {
-    "start": "electron"
+    "start": "electron .",
+    "dist": "electron-builder"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "build": {
+    "appId": "com.example.myMenubarApp",
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg"
+    }
+  },
+  "dependencies": {
+    "menubar": "^9.0.0"
+  },
   "devDependencies": {
-    "electron": "^24.1.3"
+    "electron": "^20.0.0",
+    "electron-builder": "^23.6.0"
   }
 }
