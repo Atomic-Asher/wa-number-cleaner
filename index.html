@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
   <div class="container py-5">
@@ -14,29 +15,25 @@
       <div class="col-md-6">
         <h1 class="text-center mb-4">WhatsApp Number Cleaner</h1>
         <h3 class="text-center mb-4">Developed by <a href="https://AtomicAsher.com">Atomic Asher LLP</a></h3>
-        <div class="input-group mb-3">
-          <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number" onkeydown="if (event.key === 'Enter') cleanNumber()">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="cleanNumber()">Clean Number</button><a href="#" class="text-decoration-none">
-                <div class="tooltip">
-                  <span class="tooltiptext">Effortlessly clean phone numbers and generate ready-to-use WhatsApp links. Just copy and paste.</span>
-                    </div>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-question-fill" viewBox="0 0 16 16">
-                  <path d="M5.933.87a2.89 2.89 0 0 1 4.134 0l.622.638.89-.011a2.89 2.89 0 0 1 2.924 2.924l-.01.89.636.622a2.89 2.89 0 0 1 0 4.134l-.637.622.011.89a2.89 2.89 0 0 1-2.924 2.924l-.89-.01-.622.636a2.89 2.89 0 0 1-4.134 0l-.622-.637-.89.011a2.89 2.89 0 0 1-2.924-2.924l.01-.89-.636-.622a2.89 2.89 0 0 1 0-4.134l.637-.622-.011-.89a2.89 2.89 0 0 1 2.924-2.924l.89.01.622-.636zM7.002 11a1 1 0 1 0 2 0 1 1 0 0 0-2 0zm1.602-2.027c.04-.534.198-.815.846-1.26.674-.475 1.05-1.09 1.05-1.986 0-1.325-.92-2.227-2.262-2.227-1.02 0-1.792.492-2.1 1.29A1.71 1.71 0 0 0 6 5.48c0 .393.203.64.545.64.272 0 .455-.147.564-.51.158-.592.525-.915 1.074-.915.61 0 1.03.446 1.03 1.084 0 .563-.208.885-.822 1.325-.619.433-.926.914-.926 1.64v.111c0 .428.208.745.585.745.336 0 .504-.24.554-.627z"></path>
-                </svg>
-              </a>
-          </div>
-        </div>
+        <div class="text-center mb-4">Chat with numbers without saving to your contacts</div>
         <div class="form-group">
           <label for="country">Select Country Code:</label>
           <select class="form-control" id="country">
-            <option value="91">India (+91)  With❤️from India 🇮🇳</option>
+            <option value="91">India (+91)  🇮🇳❤️from India</option>
             <option value="1">USA (+1)</option>
             <option value="44">UK (+44)</option>
-            
+           
             <option value="81">Japan (+81)</option>
           </select>
         </div>
+        <div class="input-group mb-3">
+          <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="cleanNumber()">Clean Number</button>
+            <span class="input-group-text" data-toggle="tooltip" data-placement="top" title="Effortlessly clean phone numbers and generate ready-to-use WhatsApp links."><i class="fas fa-question"></i></span>
+          </div>
+        </div>
+       
         <div id="result" class="text-center"></div>
         <div id="changes" class="text-center"></div>
         <div id="error" class="text-center"></div>
@@ -44,11 +41,19 @@
     </div>
   </div>
   <script src="renderer.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 </body>
-  <footer>
-    <div class="row justify-content-center">
-  <p>An Open Source project by <a href="https://AtomicAsher.com">Atomic Asher LLP</a></p><br>
-  <p> See our <a href="https://github.com/anirudhasher/whatsapp-number-cleaner/">Github</a> to contribute or to read the code</p>
-    </div>
+<footer>
+  <div class="row justify-content-center">
+<p>An Open Source project by <a href="https://AtomicAsher.com">Atomic Asher LLP</a></p>
+<br>
+<p> See our <a href="https://github.com/anirudhasher/whatsapp-number-cleaner/">Github</a> to contribute or to read the code</p>
+  </div>
 </footer>
 </html>
+
