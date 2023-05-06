@@ -1,27 +1,13 @@
-body {
-  background-color: #f8f9fa;
-}
-
-#result a {
-  color: #007bff;
-  text-decoration: none;
-  background-color: transparent;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
-
-#result a:hover {
-  color: #0056b3;
-  text-decoration: underline;
-}
 #changes {
-    font-family: monospace;
-    background-color: #000;
-    color: #0f0;
-    padding: 10px;
-    border-radius: 5px;
-    white-space: pre-line;
-    overflow-x: auto;
-    max-height: 200px;
+  font-family: monospace;
+  background-color: #000;
+  color: #0f0;
+  padding: 10px;
+  border-radius: 5px;
+  white-space: pre-line;
+  overflow-x: auto;
+  max-height: 200px;
+  margin-top: 10px;
 }
 
 /* Tooltip container */
@@ -29,29 +15,25 @@ body {
   position: relative;
   display: inline-block;
   cursor: pointer;
-  color: #3c3c3c; /* Change as needed */
+  color: #000;
 }
 
 /* Tooltip text */
 .tooltip .tooltiptext {
   visibility: hidden;
-  width: 120px;
+  width: 220px;
   background-color: #555;
-  color: #fff;
+  color: #000;
   text-align: center;
-  padding: 5px 0;
+  padding: 5px 10px;
   border-radius: 6px;
-
-  /* Position the tooltip text */
   position: absolute;
   z-index: 1;
-  bottom: 100%; /* Place the tooltip above the text */
+  bottom: 125%;
   left: 50%;
-  margin-left: -60px; /* -width/2 to center the tooltip */
-
-  /* Fade in tooltip */
+  transform: translateX(-50%);
   opacity: 0;
-  transition: opacity 0.3s;
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 /* Tooltip arrow */
@@ -71,3 +53,28 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
+h1 {
+  font-size: 32px; /* Adjust the font size as needed */
+}
+
+h3 {
+  font-size: 24px; /* Adjust the font size as needed */
+}
+
+#result {
+  margin-bottom: 10px;
+}
+
+.btn {
+  border-radius: 20px;
+}
+
+.rounded-button {
+  border-radius: 100px; /* Set the border radius value to create rounded edges */
+}
+
+.rounded-button:hover {
+  background-color: #227ad1; /* Change the hover background color as needed */
+}
+
