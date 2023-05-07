@@ -77,4 +77,8 @@ h3 {
 .rounded-button:hover {
   background-color: #227ad1; /* Change the hover background color as needed */
 }
+.btn:hover {
+  background-color: #227ad1;
+}
+
 
