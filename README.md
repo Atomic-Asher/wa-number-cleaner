@@ -1,4 +1,4 @@
-# WhatsApp Link Cleaner
+# WhatsApp Number Cleaner
 
 WhatsApp Link Cleaner is an Electron-based desktop application that helps you to clean phone numbers and generate WhatsApp message links.
 
