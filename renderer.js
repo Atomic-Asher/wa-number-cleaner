@@ -31,13 +31,13 @@ function cleanNumber() {
     }
   
     let link = "https://wa.me/" + phoneNumber;
-    document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary">Clipboard</button>`;
+    document.getElementById("result").innerHTML = `<a href="${link}" id="waLink"  target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary"><img src="clipboard-removebg-preview.png" width="20" height="20" /></button>`;
     
-    let changes = "Original number: " + originalNumber + "<br>";
-    changes += "Non-digit characters removed: " + (originalNumber.length - phoneNumber.length + zerosRemoved) + "<br>";
-    changes += "Leading zeros removed: " + zerosRemoved + "<br>";
-    changes += "Country code " + countryCode + " " + (countryCodeAdded ? "added" : "already present");
-    document.getElementById("changes").innerHTML = changes;
+    // let changes = "Original number: " + originalNumber + "<br>";
+    // changes += "Non-digit characters removed: " + (originalNumber.length - phoneNumber.length + zerosRemoved) + "<br>";
+    //changes += "Leading zeros removed: " + zerosRemoved + "<br>";
+    // changes += "Country code " + countryCode + " " + (countryCodeAdded ? "added" : "already present");
+    // document.getElementById("changes").innerHTML = changes;
     
-    document.getElementById("error").innerHTML = "";
+    // document.getElementById("error").innerHTML = "";
   }
