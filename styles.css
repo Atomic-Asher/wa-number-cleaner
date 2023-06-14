@@ -1,5 +1,57 @@
-#changes {
-  font-family: monospace;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(to bottom left, #007aff, #64a6f2, #007aff);
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.rounded-container {
+  background-color: #007aff;
+  flex: 1 1 auto;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.rounded-container-2 {
+  background-color: #60a5f2;
+  flex: 1 1 auto;
+  border-radius: 20px;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+
+.wrapper {
+  height: 75vh;
+  width: 60vw;
+  display: flex;
+  flex-direction: row;
+  border-radius: 20px;
+}
+
+.asher-link {
+  color: #fff;
+}
+/* #changes { */
+  /* font-family: monospace;
   background-color: #000;
   color: #0f0;
   padding: 10px;
@@ -8,18 +60,18 @@
   overflow-x: auto;
   max-height: 200px;
   margin-top: 10px;
-}
-
+ 
+} */
 /* Tooltip container */
-.tooltip {
-  position: relative;
+/* .tooltip { */
+  /* position: relative;
   display: inline-block;
   cursor: pointer;
   color: #000;
-}
+} */
 
 /* Tooltip text */
-.tooltip .tooltiptext {
+/* .tooltip .tooltiptext {
   visibility: hidden;
   width: 220px;
   background-color: #555;
@@ -34,26 +86,25 @@
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.3s, visibility 0.3s;
-}
+} */
 
 /* Tooltip arrow */
-.tooltip .tooltiptext::after {
+/* .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
   top: 100%; /* Below the tooltip */
-  left: 50%;
+  /* left: 50%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
   border-color: #555 transparent transparent transparent;
-}
+} */ 
 
 /* Show the tooltip text when you mouse over the tooltip container */
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-  opacity: 1;
-}
-
+/* .tooltip:hover .tooltiptext { */
+  /* visibility: visible;
+  opacity: 1; */
+/* } */
 h1 {
   font-size: 32px; /* Adjust the font size as needed */
 }
@@ -71,14 +122,60 @@ h3 {
 }
 
 .rounded-button {
-  border-radius: 100px; /* Set the border radius value to create rounded edges */
+  border-radius: 20 px; /* Set the border radius value to create rounded edges */
 }
 
 .rounded-button:hover {
   background-color: #227ad1; /* Change the hover background color as needed */
 }
+
 .btn:hover {
-  background-color: #227ad1;
+  background-color: #99C8FC;
+}
+.form-equal-width {
+  width: 100%; /* Adjust the width as needed */
+}
+.rounded-container {
+  background-color: #007aff;
+  flex: 1 0 50%;
+  border-radius: 20px;
+  
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 1.5rem;
 }
 
-
+.rounded-container-2 {
+  background-color: #B5D8FF;
+  flex: 1 0 50%;
+  border-radius: 20px;
+  padding-left: 20px;
+  border: 1px solid white;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 1.5rem;
+  
+}
+.grow{
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+ 
+  
+  color: white;
+}
+.inter-text {
+  font-family: "Inter", sans-serif;
+}
+.result-link {
+  font-size: 20px; /* Adjust the font size as needed */
+}
+#button-addon2 {
+  border-radius: 0; /* Set the border radius to 0 for square edges */
+}
