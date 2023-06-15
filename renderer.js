@@ -1,59 +1,50 @@
 function cleanNumber() {
-    let phoneNumber = document.getElementById("phone").value;
-    let originalNumber = phoneNumber;
-    phoneNumber = phoneNumber.replace(/\D/g, "");  // remove all non-digit characters
-  
-    // Remove leading zeros if present
-    let zerosRemoved = 0;
-    while (phoneNumber.startsWith("0")) {
-        phoneNumber = phoneNumber.substring(1);
-        zerosRemoved++;
-    }
-  
-    let countryCodeAdded = false;
-    let countryCode = document.getElementById("country").value;
-  
-    // Check if the first two digits match the country code
-    if (phoneNumber.startsWith(countryCode)) {
-      countryCodeAdded = true;
-    } else if (phoneNumber.length === 10) {
-      // Prepend country code if it's not already present at the beginning
-      phoneNumber = countryCode + phoneNumber;
-      countryCodeAdded = true;
-    } else if (phoneNumber.length === 12 && phoneNumber.startsWith("00" + countryCode)) {
-      // Remove the first two digits and prepend country code
-      phoneNumber = countryCode + phoneNumber.substring(2);
-      countryCodeAdded = true;
-    } else {
-      // Throw an error if the entered number is neither 10 digits nor a 12-digit number with matching country code
-      document.getElementById("error").innerHTML = "Invalid phone number";
-      return;
-    }
-  
-    let link = "https://wa.me/" + phoneNumber;
-    document.getElementById("result").innerHTML = `<a href="${link}" id="waLink"  target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary"><img src="clipboard-removebg-preview.png" width="20" height="20" /></button>`;
-    
-    // let changes = "Original number: " + originalNumber + "<br>";
-    // changes += "Non-digit characters removed: " + (originalNumber.length - phoneNumber.length + zerosRemoved) + "<br>";
-    //changes += "Leading zeros removed: " + zerosRemoved + "<br>";
-    // changes += "Country code " + countryCode + " " + (countryCodeAdded ? "added" : "already present");
-    // document.getElementById("changes").innerHTML = changes;
-    
-    // document.getElementById("error").innerHTML = "";
+  const phoneNumberInput = document.getElementById("phone");
+  const countryCodeInput = document.getElementById("country");
+  const phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // remove all non-digit characters
+  const countryCode = countryCodeInput.value;
+  const originalNumber = phoneNumberInput.value;
+
+  // Check if the phone number is valid
+  if (phoneNumber.length !== 10 && phoneNumber.length !== 12) {
+    document.getElementById("error").textContent = "Invalid phone number";
+    phoneNumberInput.classList.add("error-animation");
+    return;
   }
 
- document.getElementById("phone").addEventListener("keydown", function(event) {
+  // Prepend the country code if necessary
+  let formattedNumber = phoneNumber;
+  if (phoneNumber.length === 10 && !phoneNumber.startsWith(countryCode)) {
+    formattedNumber = countryCode + phoneNumber;
+  } else if (phoneNumber.length === 12 && !phoneNumber.startsWith("00" + countryCode)) {
+    formattedNumber = countryCode + phoneNumber.substring(2);
+  }
+
+  const link = "https://wa.me/" + formattedNumber;
+  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary"><img src="clipboard-removebg-preview.png" width="20" height="20" /></button>`;
+  
+  // Apply animation to indicate a new number was processed
+  phoneNumberInput.classList.add("success-animation");
+  
+  // Clear any error message and animation after a delay
+  setTimeout(() => {
+    document.getElementById("error").textContent = "";
+    phoneNumberInput.classList.remove("error-animation");
+    phoneNumberInput.classList.remove("success-animation");
+  }, 2000);
+}
+
+document.getElementById("phone").addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
     document.getElementById("button-addon2").click(); // Simulate a click on the button
   }
 });
 
-document.getElementById('button-addon2').addEventListener('mousedown', function() {
-  this.style.backgroundColor = '#227ad1';
-  cleanNumber();
+document.getElementById("button-addon2").addEventListener("mousedown", function () {
+  this.style.backgroundColor = "#227ad1";
 });
 
-document.getElementById('button-addon2').addEventListener('mouseup', function() {
-  this.style.backgroundColor = '';
+document.getElementById("button-addon2").addEventListener("mouseup", function () {
+  this.style.backgroundColor = "";
 });
