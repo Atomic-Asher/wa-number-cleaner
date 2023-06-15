@@ -105,3 +105,20 @@ h3 {
 .result-link {
   font-size: 20px;
 }
+
+/* Mobile Styles */
+@media (max-width: 576px) {
+  .main-wrapper {
+    padding: 20px;
+  }
+  .wrapper {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+  .rounded-container,
+  .rounded-container-2 {
+    border-radius: 0;
+    padding: 10px;
+  }
+}
