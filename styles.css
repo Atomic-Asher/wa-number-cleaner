@@ -129,3 +129,70 @@ footer {
   color: #fff;
   text-align: center;
 }
+
+
+.error-animation {
+  animation: shake 0.5s;
+}
+
+.success-animation {
+  animation: highlight 0.5s;
+}
+.error-animation {
+  animation: shake 0.5s;
+}
+
+.success-animation {
+  animation: highlight 0.5s;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-15px);
+  }
+  40% {
+    transform: translateX(15px);
+  }
+  60% {
+    transform: translateX(-15px);
+  }
+  80% {
+    transform: translateX(15px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes highlight {
+  0% {
+    background-color: inherit;
+  }
+  50% {
+    background-color: #d4edda;
+  }
+  100% {
+    background-color: inherit;
+  }
+}
+#error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  animation: pulse 1s;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
