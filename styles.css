@@ -122,3 +122,10 @@ h3 {
     padding: 10px;
   }
 }
+
+footer {
+  padding: 20px;
+  background-color: #007aff;
+  color: #fff;
+  text-align: center;
+}
