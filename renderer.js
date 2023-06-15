@@ -41,3 +41,19 @@ function cleanNumber() {
     
     // document.getElementById("error").innerHTML = "";
   }
+
+ document.getElementById("phone").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
+    document.getElementById("button-addon2").click(); // Simulate a click on the button
+  }
+});
+
+document.getElementById('button-addon2').addEventListener('mousedown', function() {
+  this.style.backgroundColor = '#227ad1';
+  cleanNumber();
+});
+
+document.getElementById('button-addon2').addEventListener('mouseup', function() {
+  this.style.backgroundColor = '';
+});
