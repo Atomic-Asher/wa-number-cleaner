@@ -136,14 +136,14 @@ footer {
 }
 
 .success-animation {
-  animation: highlight 0.5s;
+  animation: highlight 0.9s;
 }
 .error-animation {
   animation: shake 0.5s;
 }
 
 .success-animation {
-  animation: highlight 0.5s;
+  animation: highlight 0.9s;
 }
 
 @keyframes shake {
@@ -182,7 +182,7 @@ footer {
   color: red;
   font-weight: bold;
   margin-top: 10px;
-  animation: pulse 1s;
+  animation: pulse 2s;
 }
 
 @keyframes pulse {
