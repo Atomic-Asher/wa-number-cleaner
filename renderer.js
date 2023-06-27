@@ -48,3 +48,22 @@ document.getElementById("button-addon2").addEventListener("mousedown", function 
 document.getElementById("button-addon2").addEventListener("mouseup", function () {
   this.style.backgroundColor = "";
 });
+
+document.getElementById("share-button").addEventListener("click", function () {
+  // Construct the WhatsApp URL with the message to share
+  const shareUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this app: https://whatsapp-number-cleaner.netlify.com");
+
+  // If the Web Share API is available (on mobile), use it
+  if (navigator.share) {
+    navigator.share({
+      title: "WhatsApp Number Cleaner",
+      url: shareUrl
+    }).then(() => {
+      console.log("Thanks for sharing!");
+    })
+    .catch(console.error);
+  } else {
+    // If the Web Share API is not available, open the WhatsApp URL in a new tab
+    window.open(shareUrl, "_blank");
+  }
+});
