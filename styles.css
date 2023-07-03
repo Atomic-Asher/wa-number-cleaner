@@ -1,23 +1,25 @@
-html, body {
-  height: 100%;
+body {
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
 body {
-  min-height: 100vh;
   background: linear-gradient(to bottom left, #007aff, #64a6f2, #007aff);
+  display: flex;
+  flex-direction: column;
 }
 
 .main-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  flex-grow: 1;
+  /* height: 100%; */
 }
 
 .wrapper {
-  min-height: 75vh;
+  /* min-height: 75vh; */
   width: 60vw;
   display: flex;
   flex-direction: row;
@@ -28,7 +30,7 @@ body {
 .rounded-container-2 {
   flex: 1 0 50%;
   border-radius: 20px;
-  padding: 1.5rem;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -44,7 +46,7 @@ body {
 }
 
 .rounded-container-2 {
-  background-color: #B5D8FF;
+  background-color: #b5d8ff;
   height: auto;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -119,17 +121,16 @@ h3 {
   .rounded-container,
   .rounded-container-2 {
     border-radius: 0;
-    padding: 10px;
+    padding: 5px;
   }
 }
 
 footer {
-  padding: 20px;
+  padding: 5px 20px;
   background-color: #007aff;
   color: #fff;
   text-align: center;
 }
-
 
 .error-animation {
   animation: shake 0.5s;
@@ -138,6 +139,7 @@ footer {
 .success-animation {
   animation: highlight 0.9s;
 }
+
 .error-animation {
   animation: shake 0.5s;
 }
@@ -178,6 +180,7 @@ footer {
     background-color: inherit;
   }
 }
+
 #error {
   color: red;
   font-weight: bold;
@@ -195,4 +198,8 @@ footer {
   100% {
     transform: scale(1);
   }
+}
+.wrapper {
+  margin-top: 2px; /* Adjust the margin-top value as needed */
+  /* Other CSS properties */
 }
