@@ -11,6 +11,7 @@ function cleanNumber() {
     phoneNumberInput.classList.add("error-animation");
     return;
   }
+  
 
   // Prepend the country code if necessary
   let formattedNumber = phoneNumber;
@@ -21,17 +22,32 @@ function cleanNumber() {
   }
 
   const link = "https://wa.me/" + formattedNumber;
-  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary"><img src="clipboard-removebg-preview.png" width="20" height="20" /></button>`;
-  
+  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button>`;
+  document.getElementById("phone").value = ""; // Clear the phone number input field
+
   // Apply animation to indicate a new number was processed
   phoneNumberInput.classList.add("success-animation");
-  
+
   // Clear any error message and animation after a delay
   setTimeout(() => {
     document.getElementById("error").textContent = "";
     phoneNumberInput.classList.remove("error-animation");
     phoneNumberInput.classList.remove("success-animation");
   }, 2000);
+}
+
+function clearForm() {
+  document.getElementById("phone").value = "";
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("error").textContent = "";
+}
+
+
+function copyToClipboard() {
+  const waLink = document.getElementById("waLink").getAttribute("href");
+  navigator.clipboard.writeText(waLink).then(() => {
+    console.log("WhatsApp link copied to clipboard!");
+  });
 }
 
 document.getElementById("phone").addEventListener("keydown", function (event) {
