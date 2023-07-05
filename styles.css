@@ -203,3 +203,19 @@ footer {
   margin-top: 2px; /* Adjust the margin-top value as needed */
   /* Other CSS properties */
 }
+lottie-player {
+  height: 300px; 
+  width:  300px;
+  
+}
+  @media screen and (min-width: 1600px) {
+   
+    lottie-player {
+      height: 500px;
+      width: 500px;
+
+       
+    }
+  }
+ 
+    
