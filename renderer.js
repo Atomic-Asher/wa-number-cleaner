@@ -2,11 +2,14 @@ function cleanNumber() {
   const phoneNumberInput = document.getElementById("phone");
   const countryCodeInput = document.getElementById("country");
   const phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // remove all non-digit characters
-  const countryCode = countryCodeInput.value;
-  const originalNumber = phoneNumberInput.value;
+  // const countryCode = countryCodeInput.value;
+  // const originalNumber = phoneNumberInput.value;
+  const {value: countryCode} = countryCodeInput;
+  const {value: originalNumber} = phoneNumberInput;
 
   // Check if the phone number is valid
-  if (phoneNumber.length !== 10 && phoneNumber.length !== 12) {
+  // if (phoneNumber.length !== 10 && phoneNumber.length !== 12) {
+    if (![10, 12].includes(phoneNumber.length)) {
     document.getElementById("error").textContent = "Invalid phone number";
     phoneNumberInput.classList.add("error-animation");
     return;
