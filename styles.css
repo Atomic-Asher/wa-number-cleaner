@@ -32,6 +32,10 @@ body {
   justify-content: center;
 }
 
+.special-h3 {
+  padding-top: 20px;  /* Adjust based on your design needs */
+}
+
 .rounded-container {
   background-color: #007aff;
   border-top-left-radius: 1rem;
