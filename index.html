@@ -1,147 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
+    <!-- Removed Bootstrap and Font Awesome to improve speed -->
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
     <style>
-      @media (max-width: 576px) {
-        .right-content {
-          text-align: center;
-          margin: 10px auto;
+        @media (max-width: 576px) {
+            .right-content {
+                text-align: center;
+                margin: 10px auto;
+            }
+            .form-equal-width {
+                width: 100% !important;
+            }
         }
-        .form-equal-width {
-          width: 100% !important;
-        }
-      }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <div class="main-wrapper">
-      <div class="wrapper">
-        <div class="rounded-container">
-          <div
-            class="text-center left-content grow"
-            style="margin-bottom: 50px"
-          >
-            <lottie-player
-              src="https://assets4.lottiefiles.com/packages/lf20_eYXADRNJPy.json"
-              background="transparent"
-              speed="1"
-              
-              loop
-              autoplay
-            ></lottie-player>
-            <h3>Clean, Connect and Chat on WhatsApp without saving a number</h3>
-          </div>
-
-          <h12
-            class="text-center left-content"
-            style="color: white; margin: auto"
-          >
-            Developed by
-            <a class="asher-link" href="https://AtomicAsher.com"
-              >Atomic Asher LLP</a
-            >
-          </h12>
-        </div>
-
-        <div class="rounded-container-2">
-          <h3
-            class="input-group right-content inter-text"
-            style="font-weight: bold"
-          >
-            WhatsApp Number Cleaner
-          </h3>
-
-          <div class="form-group right-content form-equal-width">
-            <label for="country">Select Country Code:</label>
-            <select class="form-control" id="country">
-              <option value="91">India (+91) 🇮🇳❤️from India</option>
-              <option value="1">USA (+1)</option>
-              <option value="44">UK (+44)</option>
-              <option value="81">Japan (+81)</option>
-            </select>
-          </div>
-
-          <div class="input-group mb-3 right-content form-equal-width">
-            <input
-              type="text"
-              id="phone"
-              class="form-control"
-              placeholder="Enter Phone Number"
-            />
-            <div class="input-group-append">
-              <span
-                class="input-group-text"
-                id="clear-button"
-                onclick="clearForm()"
-              >
-                <i class="fas fa-times"></i>
-              </span>
+        <div class="wrapper">
+            <div class="rounded-container">
+                <div class="text-center left-content grow" style="margin-bottom: 50px">
+                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_eYXADRNJPy.json" background="transparent" speed="1" loop autoplay></lottie-player>
+                    <h3>Clean, Connect and Chat on WhatsApp without saving a number</h3>
+                </div>
             </div>
-          </div>
-
-          <!-- Separate div for the button -->
-          <div class="right-content form-equal-width">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="button-addon2"
-              onclick="cleanNumber();"
-            >
-              Clean Number
-            </button>
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="share-button"
-            >
-              Share App
-            </button>
-          </div>
-
-          <div id="result" class="text-center"></div>
-          <div id="error" class="text-center"></div>
+            <div class="rounded-container-2">
+                <h3 class="input-group right-content inter-text" style="font-weight: bold">
+                    WhatsApp Number Cleaner
+                </h3>
+                <div class="form-group right-content form-equal-width">
+                    <!-- Dynamic population of country codes can be done through JavaScript -->
+                    <label for="country">Select Country Code:</label>
+                    <select class="form-control" id="country">
+                        <option value="91">India (+91)</option>
+                        <option value="1">USA (+1)</option>
+                        <option value="44">UK (+44)</option>
+                        <option value="81">Japan (+81)</option>
+                    </select>
+                </div>
+                <div class="input-group mb-3 right-content form-equal-width">
+                    <input type="text" id="phone" class="form-control" placeholder="Enter Phone Number" />
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="clear-button" onclick="clearForm()">
+                            <i class="fas fa-times"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="right-content form-equal-width">
+                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="cleanNumber();">
+                        Clean Number
+                    </button>
+                </div>
+                <div id="result" class="text-center"></div>
+                <div id="error" class="text-center"></div>
+            </div>
         </div>
-      </div>
     </div>
     <script src="renderer.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- Removed FontAwesome script to improve speed -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script>
-      function clearForm() {
-        document.getElementById("phone").value = "";
-        document.getElementById("result").innerHTML = "";
-        document.getElementById("error").textContent = "";
-      }
-    </script>
-  </body>
-  <footer>
-    <div class="row justify-content-center">
-      <p>
-        An Open Source project by
-        <a href="https://AtomicAsher.com" style="color: white"
-          >Atomic Asher LLP</a
-        >&nbsp;
-      </p>
-      <p>
-        See our
-        <a
-          href="https://github.com/anirudhasher/whatsapp-number-cleaner/"
-          style="color: white"
-          >Github</a
-        >
-        to contribute or to read the code
-      </p>
-    </div>
-  </footer>
+    <footer>
+        <div class="row justify-content-center">
+            <p>
+                An Open Source project by
+                <a href="https://AtomicAsher.com" style="color: white">Atomic Asher LLP</a>
+            </p>
+            <p>
+                See our
+                <a href="https://github.com/anirudhasher/whatsapp-number-cleaner/" style="color: white">Github</a>
+                to contribute or to read the code
+            </p>
+        </div>
+    </footer>
+</body>
+
 </html>
