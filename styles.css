@@ -2,9 +2,6 @@ body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
-}
-
-body {
   background: linear-gradient(to bottom left, #007aff, #64a6f2, #007aff);
   display: flex;
   flex-direction: column;
@@ -15,15 +12,14 @@ body {
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  /* height: 100%; */
 }
 
 .wrapper {
-  /* min-height: 75vh; */
   width: 60vw;
   display: flex;
   flex-direction: row;
   border-radius: 20px;
+  margin-top: 2px;
 }
 
 .rounded-container,
@@ -40,41 +36,18 @@ body {
   background-color: #007aff;
   border-top-left-radius: 1rem;
   border-bottom-left-radius: 1rem;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  justify-content: center;
 }
 
 .rounded-container-2 {
   background-color: #b5d8ff;
-  height: auto;
-  margin-bottom: 0;
-  padding-bottom: 0;
   border: 1px solid white;
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  justify-content: center;
 }
 
-.asher-link {
-  color: #fff;
-}
-
-h1 {
-  font-size: 32px;
-}
-
-h3 {
-  font-size: 24px;
-}
-
-#result,
-#changes,
-#error {
-  text-align: center;
-  margin-bottom: 10px;
+.form-group label,
+.input-group input {
+  /* Add your custom styles for form elements here */
 }
 
 .btn,
@@ -82,40 +55,16 @@ h3 {
   border-radius: 20px;
 }
 
-.rounded-button,
-.btn:hover {
-  background-color: #227ad1;
-}
-
-.form-equal-width {
-  width: 100%;
-}
-
-.grow {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  justify-content: center;
-}
-
-.inter-text {
-  font-family: "Inter", sans-serif;
-}
-
 .result-link {
   font-size: 20px;
 }
 
-/* Mobile Styles */
 @media (max-width: 576px) {
   .main-wrapper {
     padding: 20px;
   }
   .wrapper {
     flex-direction: column;
-    height: auto;
     width: 100%;
   }
   .rounded-container,
@@ -130,14 +79,6 @@ footer {
   background-color: #007aff;
   color: #fff;
   text-align: center;
-}
-
-.error-animation {
-  animation: shake 0.5s;
-}
-
-.success-animation {
-  animation: highlight 0.9s;
 }
 
 .error-animation {
@@ -199,23 +140,3 @@ footer {
     transform: scale(1);
   }
 }
-.wrapper {
-  margin-top: 2px; /* Adjust the margin-top value as needed */
-  /* Other CSS properties */
-}
-lottie-player {
-  height: 300px; 
-  width:  300px;
-  
-}
-  @media screen and (min-width: 1600px) {
-   
-    lottie-player {
-      height: 500px;
-      width: 500px;
-
-       
-    }
-  }
- 
-    
