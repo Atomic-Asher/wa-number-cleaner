@@ -1,87 +1,69 @@
-// Utility function to remove all non-digit characters
-const sanitizeNumber = (number) => number.replace(/\D/g, "");
-
-// Function to validate phone number length based on country code
-const isValidNumber = (number, countryCode) => {
-  const numberLength = {
-    '91': 10,
-    '1': 10,
-    '44': 10,
-    '81': 10,
-  };
-  return number.length === numberLength[countryCode];
-};
-
-// Function to format phone number with country code
-const formatNumber = (number, countryCode) => {
-  let formattedNumber = number;
-  if (!number.startsWith(countryCode)) {
-    formattedNumber = countryCode + number;
-  }
-  return formattedNumber;
-};
-
-// Main function to clean and process the phone number
-async function cleanNumber() {
+function cleanNumber() {
   const phoneNumberInput = document.getElementById("phone");
   const countryCodeInput = document.getElementById("country");
-  const phoneNumber = sanitizeNumber(phoneNumberInput.value);
+  let phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // remove all non-digit characters
+  
+  // Remove leading '0' if present
+  if (phoneNumber.startsWith("0")) {
+    phoneNumber = phoneNumber.substring(1);
+  }
+  
   const countryCode = countryCodeInput.value;
 
-  if (!isValidNumber(phoneNumber, countryCode)) {
-    displayError("Invalid phone number");
+  // Check if the phone number is valid
+  if (phoneNumber.length !== 10 && phoneNumber.length !== 12) {
+    document.getElementById("error").textContent = "Invalid phone number";
+    phoneNumberInput.classList.add("error-animation");
     return;
   }
 
-  const formattedNumber = formatNumber(phoneNumber, countryCode);
-  const link = "https://wa.me/" + formattedNumber;
-  displayResult(link);
-
-  clearInput();
-}
-
-// Function to display the result
-const displayResult = (link) => {
-  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button>`;
-};
-
-// Function to display errors
-const displayError = (errorMessage) => {
-  document.getElementById("error").textContent = errorMessage;
-};
-
-// Function to clear the phone input
-const clearInput = () => {
-  document.getElementById("phone").value = "";
-};
-
-// Function to copy link to clipboard
-async function copyToClipboard() {
-  const waLink = document.getElementById("waLink").getAttribute("href");
-  try {
-    await navigator.clipboard.writeText(waLink);
-    console.log("WhatsApp link copied to clipboard!");
-  } catch (err) {
-    console.error("Could not copy text: ", err);
+  // Prepend the country code if necessary
+  let formattedNumber = phoneNumber;
+  if (phoneNumber.length === 10 && !phoneNumber.startsWith(countryCode)) {
+    formattedNumber = countryCode + phoneNumber;
+  } else if (phoneNumber.length === 12 && !phoneNumber.startsWith("00" + countryCode)) {
+    formattedNumber = "00" + countryCode + phoneNumber.substring(2);
   }
+
+  const link = "https://wa.me/" + formattedNumber;
+  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button>`;
+  document.getElementById("phone").value = ""; // Clear the phone number input field
+
+  // Apply animation to indicate a new number was processed
+  phoneNumberInput.classList.add("success-animation");
+
+  // Clear any error message and animation after a delay
+  setTimeout(() => {
+    document.getElementById("error").textContent = "";
+    phoneNumberInput.classList.remove("error-animation");
+    phoneNumberInput.classList.remove("success-animation");
+  }, 2000);
 }
 
-// Initialize
-function initialize() {
-  document.getElementById("phone").addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      document.getElementById("button-addon2").click();
-    }
-  });
+function clearForm() {
+  document.getElementById("phone").value = "";
+  document.getElementById("result").innerHTML = "";
+  document.getElementById("error").textContent = "";
+}
 
-  document.getElementById("button-addon2").addEventListener("mousedown", function () {
-    this.style.backgroundColor = "#227ad1";
-  });
-
-  document.getElementById("button-addon2").addEventListener("mouseup", function () {
-    this.style.backgroundColor = "";
+function copyToClipboard() {
+  const waLink = document.getElementById("waLink").getAttribute("href");
+  navigator.clipboard.writeText(waLink).then(() => {
+    console.log("WhatsApp link copied to clipboard!");
   });
 }
 
-initialize();
+document.getElementById("phone").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
+    document.getElementById("button-addon2").click(); // Simulate a click on the button
+  }
+});
+
+document.getElementById("button-addon2").addEventListener("mousedown", function () {
+  this.style.backgroundColor = "#227ad1";
+});
+
+document.getElementById("button-addon2").addEventListener("mouseup", function () {
+  this.style.backgroundColor = "";
+});
