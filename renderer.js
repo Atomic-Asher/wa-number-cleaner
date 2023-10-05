@@ -2,13 +2,11 @@ function cleanNumber() {
   const phoneNumberInput = document.getElementById("phone");
   const countryCodeInput = document.getElementById("country");
   let phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // remove all non-digit characters
-  
-  // Remove leading '0' if present
-  if (phoneNumber.startsWith("0")) {
-    phoneNumber = phoneNumber.substring(1);
-  }
-  
   const countryCode = countryCodeInput.value;
+  const originalNumber = phoneNumberInput.value;
+
+  // Remove leading zeros, but keep at least one digit
+  phoneNumber = phoneNumber.replace(/^0+/, '');
 
   // Check if the phone number is valid
   if (phoneNumber.length !== 10 && phoneNumber.length !== 12) {
@@ -22,7 +20,7 @@ function cleanNumber() {
   if (phoneNumber.length === 10 && !phoneNumber.startsWith(countryCode)) {
     formattedNumber = countryCode + phoneNumber;
   } else if (phoneNumber.length === 12 && !phoneNumber.startsWith("00" + countryCode)) {
-    formattedNumber = "00" + countryCode + phoneNumber.substring(2);
+    formattedNumber = countryCode + phoneNumber.substring(2);
   }
 
   const link = "https://wa.me/" + formattedNumber;
@@ -46,12 +44,14 @@ function clearForm() {
   document.getElementById("error").textContent = "";
 }
 
+
 function copyToClipboard() {
   const waLink = document.getElementById("waLink").getAttribute("href");
   navigator.clipboard.writeText(waLink).then(() => {
     console.log("WhatsApp link copied to clipboard!");
   });
 }
+
 
 document.getElementById("phone").addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
@@ -67,3 +67,45 @@ document.getElementById("button-addon2").addEventListener("mousedown", function 
 document.getElementById("button-addon2").addEventListener("mouseup", function () {
   this.style.backgroundColor = "";
 });
+
+// document.getElementById("share-button").addEventListener("click", function () {
+//   // Construct the WhatsApp URL with the message to share
+//   const shareUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this app: https://whatsapp-number-cleaner.netlify.com");
+
+//   // If the Web Share API is available (on mobile), use it
+//   if (navigator.share) {
+//     navigator.share({
+//       title: "WhatsApp Number Cleaner",
+//       url: shareUrl
+//     }).then(() => {
+//       console.log("Thanks for sharing!");
+//     })
+//     .catch(console.error);
+//   } else {
+//     // If the Web Share API is not available, open the WhatsApp URL in a new tab
+//     window.open(shareUrl, "_blank");
+//   }
+// });
+
+
+let qrCodeGenerated = false; 
+function generateQRCode() {
+  if (qrCodeGenerated) {
+    return; // Don't generate QR code again if it has already been generated
+  }
+
+  const shareUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this app: https://whatsapp-number-cleaner.netlify.com");
+  const qrcode = new QRCode(document.getElementById("qrcode-container"), {
+    text: shareUrl,
+    width: 128, // Adjust this size as needed
+    height: 128, // Adjust this size as needed
+  });
+
+  qrCodeGenerated = true; // Set the flag to indicate QR code generation
+}
+
+
+
+
+
+
