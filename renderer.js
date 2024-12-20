@@ -24,7 +24,9 @@ function cleanNumber() {
   }
 
   const link = "https://wa.me/" + formattedNumber;
-  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a> <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button>`;
+  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a>
+  <div class="result-buttons-wrapper">
+  <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button></div>`;
   document.getElementById("phone").value = ""; // Clear the phone number input field
 
   // Apply animation to indicate a new number was processed
@@ -87,25 +89,32 @@ document.getElementById("button-addon2").addEventListener("mouseup", function ()
 //   }
 // });
 
-
 let qrCodeGenerated = false; 
+
 function generateQRCode() {
-  if (qrCodeGenerated) {
-    return; // Don't generate QR code again if it has already been generated
+  const qrCodeImage = document.querySelector("#qrcode-container");
+
+  if (!qrCodeGenerated) {
+    const shareUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this app: https://whatsapp-number-cleaner.netlify.com");
+    new QRCode(document.getElementById("qrcode-image"), {
+      text: shareUrl,
+      width: 128, // Adjust this size as needed
+      height: 128, // Adjust this size as needed
+    });
+    qrCodeGenerated = true; // Set the flag to indicate QR code generation
   }
 
-  const shareUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this app: https://whatsapp-number-cleaner.netlify.com");
-  const qrcode = new QRCode(document.getElementById("qrcode-container"), {
-    text: shareUrl,
-    width: 128, // Adjust this size as needed
-    height: 128, // Adjust this size as needed
-  });
-
-  qrCodeGenerated = true; // Set the flag to indicate QR code generation
+  // Always show the QR code when the share button is pressed
+  qrCodeImage.classList.add("showQr");
+  qrCodeImage.classList.remove("hideQr");
 }
 
-
-
+const qrExit = document.querySelector(".exit-svg");
+qrExit.addEventListener("click", () => {
+  const qrCodeImage = document.querySelector("#qrcode-container");
+  qrCodeImage.classList.remove("showQr");
+  qrCodeImage.classList.add("hideQr");
+});
 
 
 

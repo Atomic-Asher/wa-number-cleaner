@@ -4,46 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-
-    <style>
-      @media (max-width: 576px) {
-        .right-content {
-          text-align: center;
-          margin: 10px auto;
-        }
-        .form-equal-width {
-          width: 100% !important;
-        }
-      }
-      
-      
-      #qrcode-container {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-   
-    </style>
   </head>
   <body>
     <div class="main-wrapper">
       <div class="wrapper">
         <div class="rounded-container">
-          <div
-            class="text-center left-content grow"
-            style="margin-bottom: 50px"
-          >
+          <div class="grow" style="margin-bottom: 50px">
             <lottie-player
               src="https://assets4.lottiefiles.com/packages/lf20_eYXADRNJPy.json"
               background="transparent"
@@ -51,83 +18,115 @@
               loop
               autoplay
             ></lottie-player>
-            <h3>Clean, Connect and Chat on WA without saving a number</h3>
+            <h3 class="left-container-heading">
+              Clean, Connect and Chat on WA without saving a number
+            </h3>
           </div>
 
-          <h12
-            class="text-center left-content"
-            style="color: white; margin: auto"
-          >
+          <p class="left-container-credit">
             Developed by
             <a class="asher-link" href="https://AtomicAsher.com"
               >Atomic Asher LLP</a
             >
-          </h12>
+          </p>
         </div>
 
         <div class="rounded-container-2">
-          <h3
-            class="input-group right-content inter-text"
-            style="font-weight: bold"
-          >
-            WA Number Cleaner
-          </h3>
+          <div class="top-wrapper">
+            <h3 class="right-container-heading">WA Number Cleaner</h3>
 
-          <div class="form-group right-content form-equal-width">
-            <label for="country">Select Country Code:</label>
-            <select class="form-control" id="country">
-              <option value="91">India (+91) 🇮🇳❤️from India</option>
-              <option value="1">USA (+1)</option>
-              <option value="44">UK (+44)</option>
-              <option value="81">Japan (+81)</option>
-            </select>
-          </div>
+            <div class="country-mobile-wrapper">
+              <div class="country-input-container">
+                <!-- <label for="country">Select Country Code:</label> -->
+                <select class="form-control" id="country">
+                  <option value="91">IN (+91)</option>
+                  <option value="1">USA (+1)</option>
+                  <option value="44">UK (+44)</option>
+                  <option value="81">JP (+81)</option>
+                </select>
+              </div>
 
-          <div class="input-group mb-3 right-content form-equal-width">
-            <input
-              type="text"
-              id="phone"
-              class="form-control"
-              placeholder="Enter Phone Number"
-            />
-            <div class="input-group-append">
-              <span
-                class="input-group-text"
-                id="clear-button"
-                onclick="clearForm()"
+              <div class="mobile-input-container">
+                <input
+                  type="text"
+                  id="phone"
+                  class="form-control"
+                  placeholder="Enter Phone Number"
+                />
+                <div class="input-group-append">
+                  <span
+                    class="input-group-text"
+                    id="clear-button"
+                    onclick="clearForm()"
+                  >
+                    <i class="fas fa-times"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Separate div for the button -->
+            <div class="right-content button-wrapper">
+              <button
+                class="btn btn-primary"
+                type="button"
+                id="button-addon2"
+                onclick="cleanNumber();"
               >
-                <i class="fas fa-times"></i>
-              </span>
+              <svg class="msg-svg btn-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g data-name="Layer 2"><g data-name="message-circle"><rect width="24" height="24" opacity="0"/><path d="M19.07 4.93a10 10 0 0 0-16.28 11 1.06 1.06 0 0 1 .09.64L2 20.8a1 1 0 0 0 .27.91A1 1 0 0 0 3 22h.2l4.28-.86a1.26 1.26 0 0 1 .64.09 10 10 0 0 0 11-16.28zM8 13a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm4 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm4 0a1 1 0 1 1 1-1 1 1 0 0 1-1 1z"/></g></g></svg>
+                Clean Number
+              </button>
+              <button
+                class="btn btn-secondary"
+                type="button"
+                id="share-button"
+                onclick="generateQRCode();"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="msg-svg btn-svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    d="M384 336a63.78 63.78 0 00-46.12 19.7l-148-83.27a63.85 63.85 0 000-32.86l148-83.27a63.8 63.8 0 10-15.73-27.87l-148 83.27a64 64 0 100 88.6l148 83.27A64 64 0 10384 336z"
+                  />
+                </svg>
+                Share App
+              </button>
+            </div>
+
+            <div id="result" class="text-center"></div>
+            <div id="error" class="text-center"></div>
+            <div id="qrcode-container" class="hideQr">
+              
+              <div id="qrcode-image" class="qr-wrapper"></div>
+              <div class="exit-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"><path d="M289.94 256l95-95A24 24 0 00351 127l-95 95-95-95a24 24 0 00-34 34l95 95-95 95a24 24 0 1034 34l95-95 95 95a24 24 0 0034-34z"/></svg>
+              </div>
+              
             </div>
           </div>
-
-          <!-- Separate div for the button -->
-          <div class="right-content form-equal-width">
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="button-addon2"
-              onclick="cleanNumber();"
-            >
-              Clean Number
-            </button>
-            <button
-              class="btn btn-outline-secondary"
-              type="button"
-              id="share-button"
-              onclick="generateQRCode();"
-            >
-              Share App
-            </button>
+          <!-- footer -->
+          <div class="footer">
+            <p>
+              An Open Source project by
+              <a href="https://AtomicAsher.com"
+                >Atomic Asher LLP</a
+              >&nbsp;
+            </p>
+            <p>
+              See our
+              <a
+                href="https://github.com/anirudhasher/whatsapp-number-cleaner/"
+                >Github</a
+              >
+              to contribute or to read the code
+            </p>
           </div>
-
-          <div id="result" class="text-center"></div>
-          <div id="error" class="text-center"></div>
-          <div id="qrcode-container" class="text-center"></div>
         </div>
       </div>
     </div>
-    <div id="qrcode" class="text-center"></div>
+    <!-- <div id="qrcode" class="text-center"></div> -->
     <script src="renderer.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
@@ -139,26 +138,6 @@
       }
 
       // Function to generate QR code and display it
-      
     </script>
   </body>
-  <footer>
-    <div class="row justify-content-center">
-      <p>
-        An Open Source project by
-        <a href="https://AtomicAsher.com" style="color: white"
-          >Atomic Asher LLP</a
-        >&nbsp;
-      </p>
-      <p>
-        See our
-        <a
-          href="https://github.com/anirudhasher/whatsapp-number-cleaner/"
-          style="color: white"
-          >Github</a
-        >
-        to contribute or to read the code
-      </p>
-    </div>
-  </footer>
 </html>
