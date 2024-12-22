@@ -70,10 +70,8 @@ body {
   overflow: hidden;
   padding: 0px 50px;
 }
-
-.top-wrapper {
-  display: flex;
-  ;
+.top-wrapper{
+  display: flex;;
   flex-direction: column;
   justify-content: flex-end;
   gap: 20px;
@@ -81,7 +79,6 @@ body {
   height: fit-content;
   margin: auto;
 }
-
 .asher-link {
   color: #fff;
 }
@@ -107,22 +104,19 @@ body {
   font-weight: bold;
 }
 
-.country-mobile-wrapper {
+.country-mobile-wrapper{
   width: 100%;
   display: flex;
   align-items: start;
   justify-content: start;
 }
-
-.country-input-container {
+.country-input-container{
   width: 20%;
 }
-
-.mobile-input-container {
+.mobile-input-container{
   width: 80%;
 }
-
-#country {
+#country{
   appearance: none;
   border: 1px solid #dadada;
   border-radius: 10px;
@@ -134,8 +128,7 @@ body {
   cursor: pointer;
   width: 100%;
 }
-
-#phone {
+#phone{
   border: 1px solid #dadada;
   border-radius: 10px;
   border-top-left-radius: 0;
@@ -146,8 +139,7 @@ body {
   width: 100%;
   border-left: 0;
 }
-
-.btn {
+.btn{
   width: fit-content;
   padding: 12px 24px;
   border-radius: 10px;
@@ -158,29 +150,24 @@ body {
   justify-content: center;
   gap: 10px;
 }
-
-.btn-svg {
+.btn-svg{
   width: 20px;
   height: auto;
   fill: white;
 }
-
-.btn-primary {
+.btn-primary{
   background-color: #007aff;
   color: white;
 }
-
-.btn-secondary {
+.btn-secondary{
   width: fit-content;
   border: 1px solid #e2e2e2;
   background-color: white;
 }
-
-.btn-secondary svg {
+.btn-secondary svg{
   fill: #303030;
 }
-
-#waLink {
+#waLink{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,9 +180,8 @@ body {
   color: black;
   font-size: 1.5rem;
 }
-
 #result,
-#changes {
+#changes{
   display: flex;
   justify-content: start;
   align-items: center;
@@ -203,21 +189,17 @@ body {
   gap: 10px;
   margin-bottom: 10px;
 }
-
-.result-buttons-wrapper {
+.result-buttons-wrapper{
   display: flex;
   gap: 10px;
 }
-
-#error {
+#error{
   text-align: center;
 }
-
-.button-wrapper {
+.button-wrapper{
   display: flex;
   gap: 10px;
 }
-
 .grow {
   flex-grow: 1;
   display: flex;
@@ -234,8 +216,7 @@ body {
 .result-link {
   font-size: 20px;
 }
-
-.footer {
+.footer{
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -244,102 +225,48 @@ body {
   padding: 24px 0;
   gap: 10px;
 }
-
-.footer p {
+.footer p{
   font-size: 1.5rem;
   word-spacing: 1px;
 }
-
-.footer p a {
+.footer p a{
   color: black;
 }
-
-.footer p a:hover {
+.footer p a:hover{
   color: #007aff;
 }
-
-#qrcode-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: fit-content;
-  height: fit-content;
-  background: white;
-  border-radius: 10px;
-  padding: 60px 10px;
+#qrcode-container{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.104);
-  z-index: 9999;
-  border: 1px solid #dadada;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  gap: 10px;
+  position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 1px solid #dadada;
 }
-
-#qrcode-container.hideQr {
+.hideQr{
   display: none;
   opacity: 0;
 }
-
-#qrcode-container.showQr {
+.showQr{
   display: flex;
   opacity: 1;
 }
-
-.qr-text {
-  text-align: center;
-  margin-bottom: 10px;
-  width: 80%;
-}
-
-.qr-title {
-  font-size: 3.5rem;
-  font-weight: bold;
-  color: #000;
-  margin-bottom: 5px;
-}
-
-.qr-description {
-  font-size: 1.8rem;
-  color: #555;
-  margin: 0;
-}
-
-.exit-svg {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: fit;
+.exit-svg{
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   height: auto;
   cursor: pointer;
 }
-
-.exit-svg svg {
-  width: 40px;
-  height: 40px;
+.exit-svg svg{
+  width: 30px;
   fill: rgb(203, 71, 71);
-}
-
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
-  /* Semi-transparent dark background */
-  z-index: 9998;
-  /* Below the QR container but above main content */
-  display: none;
-}
-
-.overlay.active {
-  display: block;
 }
 
 .error-animation {
@@ -456,7 +383,6 @@ lottie-player {
     font-size: 55%;
   }
 }
-
 /* Mobile Styles */
 @media (max-width: 900px) {
 
@@ -473,22 +399,16 @@ lottie-player {
     height: fit-content;
     width: 100%;
   }
-
-  .rounded-container {
+  .rounded-container{
     padding: 40px;
   }
-
-  .left-container-heading {
+  .left-container-heading{
     text-align: center;
   }
 }
-
 @media screen and (max-width:768px) {
   html {
     font-size: 50%;
-  }
-  #qrcode-container{
-    padding:40px 40px;
   }
 
 }
@@ -497,61 +417,47 @@ lottie-player {
   html {
     font-size: 45%;
   }
-
-  .main-wrapper {
+  .main-wrapper{
     height: fit-content;
   }
-
-  lottie-player {
+  lottie-player{
     height: 200px;
     width: 200px;
   }
-
-  #result {
+  #result{
     flex-direction: column;
     align-items: start;
   }
-
-  .button-wrapper {
+  .button-wrapper{
     flex-direction: column;
   }
-
-  .rounded-container {
+  .rounded-container{
     height: fit-content;
-    padding-top: unset;
+    padding-top:unset;
   }
-
-  .rounded-container-2 {
+  .rounded-container-2{
     padding-bottom: 20px;
   }
-
-  .right-container-heading {
+  .right-container-heading{
     font-size: 4.5rem;
   }
-
-  .left-container-heading {
+  .left-container-heading{
     width: 100%;
   }
-
-  #phone,
-  #country {
+  #phone,#country{
     font-size: 1.8rem;
   }
-
-  .footer {
+  .footer{
     margin-top: 50px;
     padding: 0;
-    gap: 5px;
+    gap:5px;
   }
-
-  .country-input-container {
+  .country-input-container{
     width: 30%;
   }
-
-  .mobile-input-container {
+  .mobile-input-container{
     width: 70%;
   }
- 
 
 }
 
@@ -559,16 +465,15 @@ lottie-player {
   html {
     font-size: 43%;
   }
-
+  
 }
 
 @media screen and (max-width:375px) {
   html {
     font-size: 40%;
   }
-
   .rounded-container,
-  .rounded-container-2 {
+  .rounded-container-2{
     padding: 20px;
   }
 }
@@ -578,9 +483,5 @@ lottie-player {
     font-size: 40%;
   }
 }
-
-
-
-
 
 /* responsive code above */

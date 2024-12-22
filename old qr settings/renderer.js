@@ -98,8 +98,8 @@ function generateQRCode() {
     const shareUrl = "https://wa.me/?text=" + encodeURIComponent("Check out this app: https://whatsapp-number-cleaner.netlify.com");
     new QRCode(document.getElementById("qrcode-image"), {
       text: shareUrl,
-      width: 200, // Adjust this size as needed
-      height: 200, // Adjust this size as needed
+      width: 128, // Adjust this size as needed
+      height: 128, // Adjust this size as needed
     });
     qrCodeGenerated = true; // Set the flag to indicate QR code generation
   }
