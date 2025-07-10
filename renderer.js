@@ -26,17 +26,46 @@ function cleanNumber() {
 
   // Prepend the country code if necessary
   let formattedNumber = phoneNumber;
-  if (phoneNumber.length === 10 && !phoneNumber.startsWith(countryCode)) {
-    formattedNumber = countryCode + phoneNumber;
-  } else if (phoneNumber.length === 12 && !phoneNumber.startsWith("00" + countryCode)) {
-    formattedNumber = countryCode + phoneNumber.substring(2);
+  
+  // Check if number already starts with country code
+  if (phoneNumber.startsWith(countryCode)) {
+    formattedNumber = phoneNumber;
+  } else if (phoneNumber.startsWith("00" + countryCode)) {
+    // Remove "00" prefix and keep country code
+    formattedNumber = phoneNumber.substring(2);
+  } else {
+    // Add country code to numbers that don't have it
+    if (phoneNumber.length === 9 || phoneNumber.length === 10) {
+      formattedNumber = countryCode + phoneNumber;
+    } else if (phoneNumber.length === 12) {
+      // Assume it's international format, try to extract local number
+      if (phoneNumber.startsWith("00")) {
+        formattedNumber = countryCode + phoneNumber.substring(2 + countryCode.length);
+      } else {
+        formattedNumber = countryCode + phoneNumber.substring(countryCode.length);
+      }
+    }
   }
 
   const link = "https://wa.me/" + formattedNumber + (message ? "?text=" + encodeURIComponent(message) : "");
   const displayLink = link.length > 60 ? link.substring(0, 60) + "..." : link;
-  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${displayLink}</a>
-  <div class="result-buttons-wrapper">
-  <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button></div>`;
+  
+  // Add debug info for development
+  console.log("Debug info:", {
+    original: originalNumber,
+    cleaned: phoneNumber,
+    countryCode: countryCode,
+    formatted: formattedNumber,
+    link: link
+  });
+  
+  document.getElementById("result").innerHTML = `
+    <div style="margin-bottom: 10px; font-size: 1.4rem; color: #007aff;">
+      <strong>Formatted Number:</strong> +${formattedNumber}
+    </div>
+    <a href="${link}" id="waLink" target="_blank">${displayLink}</a>
+    <div class="result-buttons-wrapper">
+    <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button></div>`;
   document.getElementById("phone").value = ""; // Clear the phone number input field
 
   // Apply animation to indicate a new number was processed
