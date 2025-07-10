@@ -1,19 +1,27 @@
 function cleanNumber() {
   const phoneNumberInput = document.getElementById("phone");
   const countryCodeInput = document.getElementById("country");
+  const messageInput = document.getElementById("message");
   let phoneNumber = phoneNumberInput.value.replace(/\D/g, ""); // remove all non-digit characters
   const countryCode = countryCodeInput.value;
+  const message = messageInput.value.trim();
   const originalNumber = phoneNumberInput.value;
 
   // Remove leading zeros, but keep at least one digit
   phoneNumber = phoneNumber.replace(/^0+/, '');
 
+  // Check if country code is selected
+  if (!countryCode) {
+    document.getElementById("error").textContent = "Please select a country code";
+    countryCodeInput.focus();
+    return;
+  }
+
   // Check if the phone number is valid
-if (phoneNumber.length !== 9 && phoneNumber.length !== 10 && phoneNumber.length !== 12) {
-  document.getElementById("error").textContent = "Invalid phone number";
-  phoneNumberInput.classList.add("error-animation");
-  return;
-}
+  if (phoneNumber.length !== 9 && phoneNumber.length !== 10 && phoneNumber.length !== 12) {
+    document.getElementById("error").textContent = "Please enter a valid phone number (9-12 digits)";
+    phoneNumberInput.classList.add("error-animation");
+    return;
   }
 
   // Prepend the country code if necessary
@@ -24,8 +32,9 @@ if (phoneNumber.length !== 9 && phoneNumber.length !== 10 && phoneNumber.length 
     formattedNumber = countryCode + phoneNumber.substring(2);
   }
 
-  const link = "https://wa.me/" + formattedNumber;
-  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${link}</a>
+  const link = "https://wa.me/" + formattedNumber + (message ? "?text=" + encodeURIComponent(message) : "");
+  const displayLink = link.length > 60 ? link.substring(0, 60) + "..." : link;
+  document.getElementById("result").innerHTML = `<a href="${link}" id="waLink" target="_blank">${displayLink}</a>
   <div class="result-buttons-wrapper">
   <button onclick="copyToClipboard()" class="btn btn-secondary">Copy link</button><button onclick="clearForm()" class="btn btn-secondary">Clear</button></div>`;
   document.getElementById("phone").value = ""; // Clear the phone number input field
@@ -43,6 +52,7 @@ if (phoneNumber.length !== 9 && phoneNumber.length !== 10 && phoneNumber.length 
 
 function clearForm() {
   document.getElementById("phone").value = "";
+  document.getElementById("message").value = "";
   document.getElementById("result").innerHTML = "";
   document.getElementById("error").textContent = "";
 }
@@ -60,6 +70,19 @@ document.getElementById("phone").addEventListener("keydown", function (event) {
   if (event.key === "Enter") {
     event.preventDefault(); // Prevent the default Enter key behavior (e.g., form submission)
     document.getElementById("button-addon2").click(); // Simulate a click on the button
+  }
+});
+
+// Clear errors when user starts typing
+document.getElementById("phone").addEventListener("input", function () {
+  document.getElementById("error").textContent = "";
+  this.classList.remove("error-animation");
+});
+
+document.getElementById("message").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.getElementById("button-addon2").click();
   }
 });
 
@@ -116,6 +139,21 @@ qrExit.addEventListener("click", () => {
   qrCodeImage.classList.remove("showQr");
   qrCodeImage.classList.add("hideQr");
 });
+
+// Parse URL parameters and prefill message field
+function parseURLParams() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const textParam = urlParams.get('text');
+  if (textParam) {
+    const messageInput = document.getElementById("message");
+    if (messageInput) {
+      messageInput.value = decodeURIComponent(textParam);
+    }
+  }
+}
+
+// Initialize URL parameter parsing when page loads
+document.addEventListener('DOMContentLoaded', parseURLParams);
 
 
 
