@@ -122,6 +122,11 @@ body {
   width: 80%;
 }
 
+.message-input-wrapper {
+  width: 100%;
+  margin-top: 10px;
+}
+
 #country {
   appearance: none;
   border: 1px solid #dadada;
@@ -145,6 +150,15 @@ body {
   font-size: 1.5rem;
   width: 100%;
   border-left: 0;
+}
+
+#message {
+  border: 1px solid #dadada;
+  border-radius: 10px;
+  color: #141414;
+  padding: 12px 12px;
+  font-size: 1.5rem;
+  width: 100%;
 }
 
 .btn {
