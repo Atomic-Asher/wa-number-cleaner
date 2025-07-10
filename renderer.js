@@ -9,10 +9,11 @@ function cleanNumber() {
   phoneNumber = phoneNumber.replace(/^0+/, '');
 
   // Check if the phone number is valid
-  if (phoneNumber.length !== 10 && phoneNumber.length !== 12) {
-    document.getElementById("error").textContent = "Invalid phone number";
-    phoneNumberInput.classList.add("error-animation");
-    return;
+if (phoneNumber.length !== 9 && phoneNumber.length !== 10 && phoneNumber.length !== 12) {
+  document.getElementById("error").textContent = "Invalid phone number";
+  phoneNumberInput.classList.add("error-animation");
+  return;
+}
   }
 
   // Prepend the country code if necessary
