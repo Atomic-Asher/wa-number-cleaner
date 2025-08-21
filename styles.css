@@ -156,7 +156,7 @@ body {
   right: 1px;
   bottom: 1px;
   width: 35px;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.205) 0%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 1) 100%);
   border-top-right-radius: 9px;
   border-bottom-right-radius: 9px;
   pointer-events: none;
@@ -780,10 +780,10 @@ lottie-player {
 #country {
   cursor: pointer;
   padding: 10px 12px;
-  padding-right: 35px;
+  padding-right: 15px;
   border: 1px solid #ddd;
   border-radius: 6px;
-  border-right: none;
+  border-right: 1px solid white;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   height: 42px;
@@ -1016,7 +1016,7 @@ lottie-player {
   }
   
   #country {
-    padding-right: 45px !important;
+    padding-right: 10px !important;
   }
   
   .dropdown-item {
@@ -1141,7 +1141,7 @@ lottie-player {
   
 
   #country {
-    padding-right: 50px !important;
+    padding-right: 20px !important;
   }
   
 
